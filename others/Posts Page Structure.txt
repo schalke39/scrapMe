@@ -1,0 +1,89 @@
+TowardsScience post structure:
+
+Structure 1
+
+<div>  ---------main post containing the post-id
+	<div>
+		<a>
+			href --Post link
+			background-image - post image
+			<span>
+				Title of the Post
+			</span>
+		</a>
+	</div>
+	<div>
+		<a> href - post link
+			<h3>
+				<div>---Post Title----</div>
+			</h3>
+			<div>
+				----Post summary---- one liner
+			</div>
+		</a>
+		<div>
+			<div>
+				<div> ---Author avtar image
+					<a>  href= Author page link, data-user-id=<uniquely identify a user>
+						<div>
+							<img> src author image
+						</div>
+					</a>
+				</div>
+				<div>
+					<a> Text containing the Author Name
+					<div>
+						<time datetime=""> --datetime when the article was published
+						<span title=""> --read time of article
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+Structure 2
+<div>  --main post div
+	<div>
+		<a>
+			href --Post link
+			background-image - post image
+			<span>
+				Title of the Post
+			</span>
+		</a>
+		<div>
+			<div>
+				<a> href - post link
+					<h3>
+						<div>---Post Title----</div>
+					</h3>
+
+					<div>
+						----Post summary---- one liner
+					</div>
+				</a>
+				<div>
+					<div>
+						<div> ---Author avtar image
+							<a>  href= Author page link, data-user-id=<uniquely identify a user>
+								<div>
+									<img> src author image
+								</div>
+							</a>
+						</div>
+						<div>
+							<a> Text containing the Author Name
+							<div>
+								<time datetime=""> --datetime when the article was published
+								<span title=""> --read time of article
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
