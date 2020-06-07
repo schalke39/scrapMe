@@ -1,8 +1,10 @@
-from dump.TowardsDataScienceScrap import TowardsDataScienceScrap
+from src.site.TowardsDataScienceScrap import TowardsDataScienceScrap
+from multiprocessing import Pool
+import os
 
 def scrape(url):
     scrap = TowardsDataScienceScrap(url)
-    scrap.save_post_details()
+    return scrap.save_post_details()
 
 site_urls = [
     'https://towardsdatascience.com/data-science/home',
@@ -10,8 +12,16 @@ site_urls = [
     'https://towardsdatascience.com/programming/home',
     'https://towardsdatascience.com/data-visualization/home',
     'https://towardsdatascience.com/artificial-intelligence/home',
-    'https://towardsdatascience.com/video/home'
+    'https://towardsdatascience.com/video/home',
+    'https://towardsdatascience.com/'
 ]
+
+if __name__ == '__main__':
+    print("\n Begin Web Scrapping")
+    data = list(map(scrape, site_urls))
+    print("\n Scrapping Results: ")
+    print(data)
+
 
 # important - https://medium.com/python-pandemonium/6-things-to-develop-an-efficient-web-scraper-in-python-1dffa688793c
 
