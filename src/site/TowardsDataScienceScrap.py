@@ -1,10 +1,8 @@
 from src.scrapper.BaseScrapper import BaseScrapper
 from bs4 import BeautifulSoup
 import pandas as pd
-import os
 from datetime import datetime
 import os
-import base64
 
 class TowardsDataScienceScrap(BaseScrapper):
 
@@ -24,7 +22,6 @@ class TowardsDataScienceScrap(BaseScrapper):
     """
 
     def __init__(self,url):
-        print("In Constructor")
         self.driver = self.get_driver(url)
         self.source = self.scroll_to_bottom_of_page(
             self.driver).page_source
@@ -38,7 +35,6 @@ class TowardsDataScienceScrap(BaseScrapper):
                 if post.has_attr('data-post-id')]
 
     def get_post_image(self,post):
-        # Working fine
         try:
             find_image_link = post.contents[0].find('a')
             if find_image_link is not None:
@@ -50,7 +46,6 @@ class TowardsDataScienceScrap(BaseScrapper):
             print(e)
 
     def get_post_url(self,post):
-        # Working fine
         try:
             find_post_link = post.contents[0].find('a')
             if find_post_link is not None:
@@ -62,11 +57,9 @@ class TowardsDataScienceScrap(BaseScrapper):
             print(e)
 
     def get_post_title(self,post):
-        # Working Fine
         try:
             find_post_title = post.find('h3')
             if find_post_title is not None:
-                print(find_post_title.div.text)
                 return find_post_title.div.text
             else:
                 return None
@@ -75,14 +68,12 @@ class TowardsDataScienceScrap(BaseScrapper):
             print(e)
 
     def get_post_summary(self,post):
-        # Working fine
         try:
             if len(post.contents) == 2:
                 find_summary = post.contents[1].find('a',recursive=False).find('div',recursive=False)
                 if find_summary is not None and find_summary.string is not None:
                     return find_summary.string
                 else:
-                    print("Came in else")
                     find_summary = post.contents[1].contents[1].contents[1].div.string
                     if find_summary is not None and find_summary.string is not None:
                         return find_summary.string
@@ -291,11 +282,6 @@ class TowardsDataScienceScrap(BaseScrapper):
             print('Path: '+file_path)
             df.to_csv(file_path,header=True,index=False)
             return {self.site_url:file_path}
-
         except Exception as e:
             print(e)
             return {}
-
-# s_url = "https://towardsdatascience.com/"
-# obj = TowardsDataScienceScrap(s_url)
-# obj.save_post_details()
